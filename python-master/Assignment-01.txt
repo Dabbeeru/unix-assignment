@@ -1,0 +1,52 @@
+﻿Search online for the Python documentation for the len() function. It will be on a web page titled “Built-in Functions.” 
+Skim the list of other functions Python has, look up what the round() function does, and experiment with it in the interactive shell.
+Ans: 
+len() is a built-in function in python.You can use the len() to get the length of the given string, array, list, tuple, dictionary, etc.
+The len built-in returns the number of elements in a collection.
+
+# testing len() 
+str1 = "Welcome to  plural Python Tutorials"
+print("The length of the string  is :", len(str1))
+
+Output :
+
+The length of the string  is : 35
+
+# to find the length of the list
+
+list1 = ["Tim","Charlie","Tiffany","Robert"]
+
+print("The length of the list is", len(list1))
+
+Output :
+
+The length of the list is 4
+
+Look up the round() and abs() functions on the Internet, and find out what they do. Experiment with them in the interactive shell.
+
+Ans:
+Round()
+Python provides an inbuilt function round() which rounds off to the given number of digits and returns the floating point number,
+ if no number of digits is provided for round off , it rounds off the number to the nearest integer.
+
+>>> round(1.4756,2)
+1.48
+>>> round(1.3333,2)
+1.33
+
+abs()
+
+The abs() function of Python's standard library returns the absolute value of the given number. Absolute value of a number is
+ the value without considering its sign. Hence absolute of 10 is 10, -10 is also 10.
+ If the number is a complex number, abs() returns its magnitude.
+
+>>> abs(11.11)
+11.11
+>>> abs(-11.11)
+11.11
+
+
+
+
+
+

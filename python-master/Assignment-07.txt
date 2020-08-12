@@ -1,0 +1,78 @@
+Write a function named printTable() that takes a list of lists of strings and displays it in a well-organized table with each column right-justified.
+Assume that all the inner lists will contain the same number of strings.
+For example, the value could look like this:
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+ ['Alice', 'Bob', 'Carol', 'David'],
+ ['dogs', 'cats', 'moose', 'goose']]
+
+Your printTable() function would print the following:
+ apples Alice dogs
+ oranges Bob cats
+ cherries Carol moose
+ banana David goose
+
+Hint: Your code will first have to find the longest string 
+in each of the inner lists so that the whole column can be wide enough to fit all the strings. You can store the maximum width of each column as a list of integers. The printTable() function can begin with colWidths = [0] * len(tableData), which will create a list containing the same number of 0 values as the number of inner lists in tableData. That way, colWidths[0] can store the width of the longest string in tableData[0], colWidths[1] can store the width of the longest string in tableData[1], and so on. You can then find the largest value in the colWidths list to find out what integer width to pass to the rjust() string
+method.
+
+Ans:
+# orginal data
+tableData=[['apples', 'oranges', 'cherries', 'banana'],
+        ['Alice', 'Bob', 'Carol', 'David'],
+        ['dogs', 'cats', 'moose', 'goose']]
+
+# empty dictonary for sorting the data
+newTable = {0:[], 1:[], 2:[], 3:[]}
+
+# iterate through each list in tableData
+for li in tableData:
+    for i in range(len(li)):
+        # put each item of tableData into newTable by index
+        newTable[i].append(li[i])
+
+# determine the longest list by number of total characters
+# for instance ['apples', 'Alice', 'dogs'] would be 15 characters
+# we will start with longest being zero at the start
+longest = 0
+# iterate through newTable
+# for example the first key:value will be 0:['apples', 'Alice', 'dogs']
+# we only really care about the value (the list) in this case
+for key, value in newTable.items():
+    # determine the total characters in each list
+    # so effectively len('applesAlicedogs') for the first list
+    length = len(''.join(value))
+    # if the length is the longest length so far,
+    # make that equal longest
+    if length > longest:
+        longest = length
+
+for key, value in newTable.items():
+    print(' ' * (longest - len(''.join(value))) + ' '.join(value))
+
+
+
+######################################
+
+
+#!/usr/bin/env python3
+
+tableData = [['apples', 'oranges', 'cherries', 'banana'],
+             ['Alice', 'Bob', 'Carol', 'David'],
+             ['dogs', 'cats', 'moose','goose']]
+
+def printTable():
+    colWidths = [0] * len(tableData)
+
+    # find longest word in each list, convert to int
+    # and add to colWidths var
+    for i in range(len(tableData)):
+        for l in tableData[i]:
+            if len(l) >= colWidths[i]:
+                colWidths[i] = len(l)
+    # print and justify using the values from colWidths + 1
+    for t in range(4):
+        print(tableData[0][t].rjust(colWidths[0]+1) + \
+              tableData[1][t].rjust(colWidths[1]+1) + \
+              tableData[2][t].rjust(colWidths[2]+1))
+
+printTable()
